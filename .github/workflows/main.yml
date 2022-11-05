@@ -1,0 +1,22 @@
+# Please choose the package for your distro here (under Assets):
+# https://github.com/kasmtech/KasmVNC/releases
+wget <package_url>
+
+sudo apt-get install ./kasmvncserver_*.deb
+
+# Add your user to the ssl-cert group
+sudo addgroup $USER ssl-cert
+# You will need to re-connect in order to pick up the group change
+
+# On the first run, vncserver will ask you to create a KasmVNC user and choose a desktop
+# environment you want to run. It can detect Cinnamon, Mate, LXDE, LXQT, KDE, Gnome,
+# XFCE. You can also choose to manually edit xstartup.
+# After you chose a desktop environment or to manually edit xstartup,
+# vncserver won't ask you again, unless you run it as:
+vncserver -select-de
+
+# You can select a specific Desktop Environment like this:
+vncserver -select-de mate
+
+# Tail the logs
+tail -f ~/.vnc/*.log
